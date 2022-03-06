@@ -304,8 +304,8 @@ packages:
   updatable:
     dependency: transitive
     description:
-      path: "/Users/ramonmenor/trabajo/bootcamp-mobile/flutter/keepcoding-flutter/lib/updatable"
-      relative: false
+      path: "../lib/updatable"
+      relative: true
     source: path
     version: "1.0.0"
   vector_math:

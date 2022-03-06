@@ -7,15 +7,20 @@ class GTDDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Column(
-        children: [
-          SettingsHeader(),
-          DoneHeader(),
-          DoneOptionsWidget(
-            model: DoneSettings.shared,
-          )
-        ],
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+      child: Container(
+        decoration: BoxDecoration(
+          color: secondaryColor
+        ),
+        child: Column(
+          children: [
+            SettingsHeader(),
+            DoneHeader(),
+            DoneOptionsWidget(
+              model: DoneSettings.shared,
+            )
+          ],
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+        ),
       ),
     );
   }
@@ -41,7 +46,9 @@ class SettingsHeader extends StatelessWidget {
           )
         ],
       ),
-      decoration: BoxDecoration(color: Colors.blue),
+      decoration: BoxDecoration(
+        color: Theme.of(context).primaryColor
+      ),
     );
   }
 }

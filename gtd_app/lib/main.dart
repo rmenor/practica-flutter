@@ -17,6 +17,9 @@ class GTDApp extends StatelessWidget {
       title: kAppName,
       debugShowCheckedModeBanner: false,
       home: TaskListPage(),
+      theme: ThemeData(
+        primaryColor: primaryColor,
+      ),
     );
   }
 }

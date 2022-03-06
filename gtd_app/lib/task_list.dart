@@ -37,6 +37,7 @@ class _TaskListPageState extends MOWState<TaskListModel, TaskListPage> {
             FloatingActionButton(onPressed: _newTask, child: Icon(Icons.add)),
         appBar: AppBar(
           title: Text(kAppName),
+           backgroundColor: Theme.of(context).primaryColor,
         ),
         body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Padding(

@@ -51,45 +51,44 @@ class _DetailTaskState extends MOWState<Task, DetailTask> {
       appBar: AppBar(
         title: Text('Detalle'),
         leading: BackButton(onPressed: () => returnToCaller(context)),
+        backgroundColor: Theme.of(context).primaryColor,
       ),
-      body: Column(children: [
-        Text(model.description, 
-        style: TextStyle(
-          fontWeight: FontWeight.bold, 
-          fontSize: 35)),
-        Padding(
-          padding: EdgeInsets.all(16.0),
-          child: TextField(
-            onChanged: (value) {
-              setState(() {});
-            },
-            controller: _textController,
-            decoration: InputDecoration(
-                hintText: '',
-                labelText: 'Añadir tarea',
-                icon: Icon(Icons.task),
-                suffixIcon: _iconButton()),
+      body: Card(
+        child: Column(children: [
+          Padding(
+            padding: EdgeInsets.all(16.0),
+            child: TextField(
+              onChanged: (value) {
+                setState(() {});
+              },
+              controller: _textController,
+              decoration: InputDecoration(
+                  hintText: '',
+                  labelText: 'Editar tarea',
+                  icon: Icon(Icons.task),
+                  suffixIcon: _iconButton()),
+            ),
           ),
-        ),
-        Text(text, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
-        ToggleButtons(
-          children: <Widget>[
-            Icon(Icons.sailing),
-          ],
-          onPressed: (int index) {
-            setState(() {
-              isSelected[index] = !isSelected[index];
-              if (model.state == TaskState.toDo) {
-                model.state = TaskState.done;
-                _alertDone();
-              } else {
-                model.state = TaskState.toDo;
-              }
-            });
-          },
-          isSelected: isSelected,
-        ),
-      ]),
+          Text(text, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
+          ToggleButtons(
+            children: <Widget>[
+              Icon(Icons.task_alt),
+            ],
+            onPressed: (int index) {
+              setState(() {
+                isSelected[index] = !isSelected[index];
+                if (model.state == TaskState.toDo) {
+                  model.state = TaskState.done;
+                  _alertDone();
+                } else {
+                  model.state = TaskState.toDo;
+                }
+              });
+            },
+            isSelected: isSelected,
+          ),
+        ])
+      ),
     );
   }
 
@@ -100,12 +99,12 @@ class _DetailTaskState extends MOWState<Task, DetailTask> {
       ic = null;
     } else {
       ic = IconButton(
-          onPressed: () {
-            setState(() {
-              _textController.clear();
-            });
-          },
-          icon: Icon(Icons.clear));
+        onPressed: () {
+          setState(() {
+            _textController.clear();
+          });
+        },
+        icon: Icon(Icons.clear));
     }
 
     return ic;
